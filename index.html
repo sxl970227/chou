@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 685px;
+				height: 685px;
+				background-color: red;
+				background: url(img/images/bg1.jpg) no-repeat ;
+				position: relative;
+				margin: 0 auto;
+			}
+			#box div{
+				/*float: left;*/
+				position: absolute;
+			}
+			#z1{
+				top:48px;
+				left: 55px;
+			}
+			#z2{
+				top:47px;
+				left: 197px;
+			}
+			#z3{
+				top:47px;
+				left: 339px;
+			}
+			#z4{
+				top:48px;
+				left: 481px;
+			}
+			#z5{
+				top:189px;
+				left: 481px;
+			}
+			#z6{
+				top:332px;
+				left: 481px;
+			}
+			#z7{
+				top:475px;
+				left: 481px;
+			}
+			#z8{
+				top:475px;
+				left: 339px;
+			}
+			#z9{
+				top:475px;
+				left: 197px;
+			}
+			#z10{
+				top:473px;
+				left: 55px;
+				width: 142px;
+				height: 147px;
+			}
+			#z11{
+				top:332px;
+				left: 55px;
+			}
+			#z12{
+				top:190px;
+				left: 55px;
+			}
+			#chou{
+				position: absolute;
+				left: 50%;
+				top: 225px;
+				transform: translate(-50%);
+			}
+			a{
+				text-decoration: none;
+				font-size: 50px;
+				max-width: 300px;
+				color: red;
+				border: 2px solid dodgerblue;
+				padding: 5px 10px;
+				display: block;
+				margin:20px auto 0;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box">
+			<div id="z1"><img src="img/images/1.png"/></div>
+			<div id="z2"><img src="img/images/2.png"/></div>
+			<div id="z3"><img src="img/images/3.png"/></div>
+			<div id="z4"><img src="img/images/4.png"/></div>
+			<div id="z5"><img src="img/images/5.png"/></div>
+			<div id="z6"><img src="img/images/6.png"/></div>
+			<div id="z7"><img src="img/images/7.png"/></div>
+			<div id="z8"><img src="img/images/4.png"/></div>
+			<div id="z9"><img src="img/images/6.png"/></div>
+			<div id="z10"><img src="img/images/8.png"/></div>
+			<div id="z11"><img src="img/images/5.png"/></div>
+			<div id="z12"><img src="img/images/2.png"/></div>
+			<p id="chou">
+				<img src="img/images/b2g.jpg"/>
+			</p>
+			
+		</div>
+		<a href="">再来一次</a>
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			var box1 = box.getElementsByTagName('div');
+//			console.log(box1.length)
+			var chou = document.getElementById('chou');
+			var str = ["魔音耳机","iPad","我就是不让你抽中","蓝色运动谢","黑色运动鞋","洋娃娃","iPhone7","蓝色运动鞋","洋娃娃","Nokia","黑色运动鞋","iPad"];
+			var stop = true;
+			var ting = null;
+			var d = 0;
+			var s = true;
+//			var i =0;
+			function dong(){
+				for (var i=0;i<box1.length;i++) {
+					box1[i].style.background = 'none';
+					
+				}
+//				i>=box1.length-1?i=0:i++;
+				box1[d].style.background = 'red';
+				d++;
+				if(d == box1.length){
+					d=0;
+				}
+//				console.log(box1[d]);
+//				if(i>0){
+//
+//				}else{
+//					box1[11].style.background = 'none';
+//					
+//				}
+				
+				
+			}
+//			dong();
+			
+			chou.onclick = function(){
+				
+				if(stop){
+					
+					if(!s){
+						alert('去一边玩去，你是抽不中了别抽了,就给你一次机会,想继续吗？下方按钮↓再来一次');
+					}else{
+						this.innerHTML = "<img src='img/images/b1g.jpg'/>";
+						ting = setInterval(dong,50);
+						stop = false;
+					}
+				}else{
+
+					clearInterval(ting);
+//					alert(box1[d]);
+					var k = 0;
+					var ting2 = setInterval(function(){
+						dong();
+						if(d==3){
+							clearInterval(ting2);
+							chou.innerHTML = "<img src='img/images/b2g.jpg'/>";
+							alert(str[d-1]);
+							s = false;	
+//							k++;
+//							if(k==6){
+//								
+//							}
+							
+							
+						}
+						
+						
+					},300);
+					stop = true;
+				}
+			}
+		</script>
+	</body>
+</html>
